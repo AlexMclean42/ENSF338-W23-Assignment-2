@@ -1,7 +1,23 @@
+import json
+import random
 import sys
 import time
-import json
 import matplotlib.pyplot as plt
+
+# Load the JSON data into a Python list
+with open('./ex2.json', 'r') as file:
+    data = json.load(file)
+
+# Loop through each list of numbers in the data
+for case in data:
+    # Randomly shuffle the numbers in each list
+    random.shuffle(case)
+
+# Write the shuffled data back to the .json file
+with open('./ex2.5.json', 'w') as file:
+    json.dump(data, file)
+
+
 
 sys.setrecursionlimit(20000)
 def func1(arr, low, high):
@@ -27,7 +43,7 @@ def func2(array, start, end):
 
 
 start = time.time()
-with open("./ex2.json", "r") as new_file:
+with open("./ex2.5.json", "r") as new_file:
     data = json.load(new_file)
 results = []
 for case in data:
@@ -43,3 +59,4 @@ plt.xlabel("n")
 plt.ylabel("Execution time (seconds)")
 plt.title("Quick Sort algorithm")
 plt.show()
+
